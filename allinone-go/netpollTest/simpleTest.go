@@ -1,0 +1,5 @@
+package netpollTest
+
+func SimpleTest()  {
+
+}
