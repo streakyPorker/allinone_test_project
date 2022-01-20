@@ -1,4 +1,4 @@
-package com.example.reflect;
+package com.example.allinone2.reflect;
 
 import java.lang.reflect.InvocationHandler;
 import java.lang.reflect.Method;

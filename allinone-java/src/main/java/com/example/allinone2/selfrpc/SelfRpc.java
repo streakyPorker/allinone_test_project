@@ -1,4 +1,4 @@
-package com.example.selfrpc;
+package com.example.allinone2.selfrpc;
 
 /**
  * @author lzy

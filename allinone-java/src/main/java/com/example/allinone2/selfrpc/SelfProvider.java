@@ -1,12 +1,10 @@
-package com.example.selfrpc;
+package com.example.allinone2.selfrpc;
+
+import com.example.allinone2.selfrpc.annotify.LzyService;
 
 import java.io.IOException;
-import java.io.ObjectInputStream;
-import java.io.ObjectOutputStream;
 import java.lang.reflect.InvocationTargetException;
-import java.lang.reflect.Method;
 import java.net.ServerSocket;
-import java.net.Socket;
 
 /**
  * @author lzy
@@ -21,6 +19,8 @@ public class SelfProvider {
     }
 }
 
+
+@LzyService
 class TestServiceImpl implements TestService {
     @Override
     public String foo(String arg1, String arg2) {

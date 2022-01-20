@@ -1,12 +1,12 @@
-package com.example.selfrpc;
+package com.example.allinone2.selfrpc;
 
 import java.io.IOException;
 import java.io.ObjectInputStream;
-import java.io.ObjectOutput;
 import java.io.ObjectOutputStream;
 import java.lang.reflect.InvocationHandler;
 import java.lang.reflect.Method;
 import java.lang.reflect.Proxy;
+import java.net.InetAddress;
 import java.net.Socket;
 
 public class SelfConsumer {
@@ -16,8 +16,14 @@ public class SelfConsumer {
         System.out.println(testService.foo("arg1", "arg2"));
     }
 
-    static TestService getRpcService() throws IOException {
-        Socket socket = new Socket("localhost", 9999);
+    public static <T> T getRpcService(Class<T> service) throws IOException {
+        Socket socket = new Socket(InetAddress.getLocalHost(), 9999);
+        CallStub callStub = new CallStub();
+        return null;
+    }
+
+    public static TestService getRpcService() throws IOException {
+        Socket socket = new Socket(InetAddress.getLocalHost(), 9999);
         CallStub callStub = new CallStub();
         callStub.setServiceName(TestService.class.getName());
 
@@ -31,16 +37,18 @@ public class SelfConsumer {
                 callStub.retType = method.getReturnType();
                 oos.writeObject(callStub);
                 ObjectInputStream ois = new ObjectInputStream(socket.getInputStream());
-                RetStub retStub = (RetStub)ois.readObject();
+                RetStub retStub = (RetStub) ois.readObject();
                 for (int i = 0; i < args.length; i++) {
                     args[i] = retStub.args[i];
                 }
                 return retStub.retVal;
             }
         };
-        return (TestService)Proxy.newProxyInstance(
-            TestService.class.getClassLoader(),
-            new Class[] {TestService.class},
-            handler);
+        return (TestService) Proxy.newProxyInstance(
+                TestService.class.getClassLoader(),
+                new Class[]{TestService.class},
+                handler);
     }
+
+
 }

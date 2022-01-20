@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/allinonetest.iml" filepath="$PROJECT_DIR$/.idea/allinonetest.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/allinone_test_project.iml" filepath="$PROJECT_DIR$/.idea/allinone_test_project.iml" />
     </modules>
   </component>
 </project>

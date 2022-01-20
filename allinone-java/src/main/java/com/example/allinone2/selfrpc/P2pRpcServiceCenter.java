@@ -1,26 +1,17 @@
-package com.example.selfrpc;
+package com.example.allinone2.selfrpc;
 
 import java.io.Closeable;
 import java.io.IOException;
 import java.io.ObjectInputStream;
-import java.io.ObjectOutput;
 import java.io.ObjectOutputStream;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.net.ServerSocket;
 import java.net.Socket;
-import java.util.Collections;
-import java.util.HashSet;
 import java.util.Map;
-import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ThreadPoolExecutor;
-
-import com.alibaba.dubbo.common.utils.CollectionUtils;
-
-import lombok.Data;
-import org.apache.catalina.Server;
 
 /**
  * @author lzy
@@ -59,6 +50,7 @@ public class P2pRpcServiceCenter implements Closeable {
 
     private Runnable generateServeTask(Socket socket) {
         return () -> {
+            System.out.println("get a req:"+socket);
             ObjectInputStream ois = null;
             ObjectOutputStream oos = null;
             try {
@@ -72,7 +64,7 @@ public class P2pRpcServiceCenter implements Closeable {
                     retStub.methodName = callStub.methodName;
                     retStub.retVal = method.invoke(impl, callStub.args);
                     retStub.retType = method.getReturnType();
-                    retStub.args = callStub.getArgs();ugin
+                    retStub.args = callStub.getArgs();
                     retStub.argTypes = callStub.getArgTypes();
                     oos.writeObject(retStub);
                     ois.close();

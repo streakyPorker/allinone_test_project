@@ -1,4 +1,4 @@
-package com.example.consumer.comp;
+package com.example.allinone2.consumer.comp;
 
 import com.example.allinone2.DemoService;
 

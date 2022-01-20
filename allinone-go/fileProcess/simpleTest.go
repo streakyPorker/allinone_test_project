@@ -6,7 +6,9 @@ import (
 )
 
 func init() {
+
 	file, err := ioutil.ReadFile("./asd.txt")
+
 	if err != nil {
 		return
 	}

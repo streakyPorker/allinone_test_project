@@ -1,7 +1,7 @@
 package com.example.allinone2;
 
+import com.example.Allinone2Application;
 import org.junit.jupiter.api.Test;
-import org.springframework.boot.test.context.SpringBootTest;
 
 
 class Allinone2ApplicationTests {

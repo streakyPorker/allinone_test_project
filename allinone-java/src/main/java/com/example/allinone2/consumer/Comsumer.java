@@ -1,9 +1,9 @@
-package com.example.consumer;
+package com.example.allinone2.consumer;
 
 import com.alibaba.dubbo.config.spring.context.annotation.EnableDubbo;
 
 import com.example.allinone2.DemoService;
-import com.example.consumer.comp.DemoServiceComponent;
+import com.example.allinone2.consumer.comp.DemoServiceComponent;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;

@@ -1,4 +1,4 @@
-package com.example.provider;
+package com.example.allinone2.provider;
 
 import com.example.allinone2.DemoService;
 import org.apache.dubbo.config.annotation.DubboService;

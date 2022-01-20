@@ -1,4 +1,4 @@
-package com.example.provider;
+package com.example.allinone2.provider;
 
 import com.alibaba.dubbo.config.RegistryConfig;
 import com.alibaba.dubbo.config.spring.context.annotation.EnableDubbo;
