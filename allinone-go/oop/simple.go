@@ -28,9 +28,22 @@ type ITWorker interface {
 	workWithComputer()
 }
 
+type SW interface {
+	Ref(int) int
+	Ptr(int) int
+}
+
 type SkilledWorker struct {
 	Person
 	Person2
+}
+
+func (p SkilledWorker) Ref(i int) int {
+	return i + 1
+}
+
+func (p *SkilledWorker) Ptr(i int) int {
+	return i + 2
 }
 
 func (p Person) work(id int) (desc string) {
@@ -43,12 +56,18 @@ func (p Person) rest() {
 	fmt.Println(p.name, "is resting")
 }
 
+func (p SkilledWorker) rest() {
+	fmt.Println(p.name, "is resting skillfully")
+}
+
 func (p Person) workWithComputer() {
 	fmt.Println(p.name, "is working with computer")
 }
 
 func TestFunc() {
 	sw := SkilledWorker{}
+	sw.name = "init"
+
 	person := Person{}
 	fmt.Println(sw, person)
 	var itWorker ITWorker = &person
@@ -63,13 +82,14 @@ func TestFunc() {
 
 	switch v := itWorker.(type) {
 	case nil:
-		fmt.Println("nil",v)
+		fmt.Println("nil", v)
 	default:
-		fmt.Println(reflect.TypeOf(sw),v)
+		fmt.Println(reflect.TypeOf(sw), v)
 	}
+
 }
 
-func InterfaceTestFunc()  {
+func InterfaceTestFunc() {
 }
 
 func isWorker(worker Worker) {

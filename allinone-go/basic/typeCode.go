@@ -43,12 +43,13 @@ func TypeFunc() {
 }
 
 func MapFunc() {
-	m1 := map[string]int{}
+	m1 := map[string]int{"asd": 1, "qqq": 2}
 	fmt.Println(m1, reflect.TypeOf(m1))
 
 	m2 := make(map[string]int, 10)
 	m2["a"] = 10
 	fmt.Println(m2, reflect.TypeOf(m2))
+	fmt.Println("m2`s size:", len(m2))
 
 	delete(m2, "a")
 
@@ -83,7 +84,7 @@ func SwitchFunc() {
 	}
 
 }
-func FuncFunc() {
+func DeferFunc() {
 	slice := []int{1, 2, 3, 4}
 	array := [...]int{1, 2, 3, 4}
 	defer func() {
@@ -93,8 +94,18 @@ func FuncFunc() {
 	defer func(arg int) {
 		fmt.Println("defer 2 with arg :", arg)
 	}(123)
-	defer multiArg(array[:]...)
+	defer multiArg(array[:2]...)
 
+}
+
+func RefFunc() {
+	arr := []int{1, 2, 3, 4}
+	testRef(arr)
+	fmt.Println(arr)
+}
+
+func testRef(arr []int) {
+	arr[0] = 123
 }
 
 func alterUser(user User) {
@@ -106,9 +117,15 @@ func multiArg(arr ...int) {
 		fmt.Print(v, " ")
 	}
 	fmt.Println()
+
 }
 
 type User struct {
 	name string
 	age  int
+}
+
+func (u User) string() string {
+	return "nothing"
+
 }
